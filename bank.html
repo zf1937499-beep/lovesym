@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>券包 · 瀚海遇伊梦</title>
+  <meta name="theme-color" content="#ffeef5" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body data-page="bank">
+  <main class="page">
+    <div class="page-head">
+      <div>
+        <h1 class="page-head__title">🎟 恋爱银行</h1>
+        <p class="page-head__sub">打卡赚积分，积分换券，券换对方的行动</p>
+      </div>
+      <div class="head-actions">
+        <button class="btn" type="button" id="issueBtn">+ 发行券</button>
+      </div>
+    </div>
+
+    <div class="bank-top">
+      <article class="card card--pad account-card">
+        <div class="account-card__who">
+          <span class="account-card__ava" id="myAva">瀚</span>
+          <div>
+            <div class="account-card__name" id="myName">瀚瀚</div>
+            <div class="account-card__label">我的账户余额</div>
+          </div>
+        </div>
+        <div class="account-card__num"><b id="myBalance">0</b><i>积分</i></div>
+        <div class="account-card__meta">
+          <span>累计赚 <b id="myEarned">0</b></span>
+          <span>已花掉 <b id="mySpent">0</b></span>
+        </div>
+      </article>
+
+      <article class="card card--pad">
+        <div class="card__head">
+          <h2 class="card__title"><span>💰</span>怎么赚积分</h2>
+        </div>
+        <ul class="rules" id="rules"></ul>
+      </article>
+    </div>
+
+    <div class="seg" id="seg" style="margin:20px 0 16px">
+      <button type="button" data-tab="mine" class="is-on">我的券包 <i id="cntMine">0</i></button>
+      <button type="button" data-tab="theirs">TA 的券包 <i id="cntTheirs">0</i></button>
+      <button type="button" data-tab="tx">交易记录</button>
+    </div>
+
+    <div class="coupons" id="couponPane"></div>
+    <div class="list" id="txPane" hidden></div>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/page-bank.js"></script>
+</body>
+</html>

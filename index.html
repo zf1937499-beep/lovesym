@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>首页 · 瀚海遇伊梦</title>
+  <meta name="theme-color" content="#ffeef5" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body data-page="home">
+  <main class="page">
+    <section class="hero">
+      <div class="hero__blob hero__blob--1"></div>
+      <div class="hero__blob hero__blob--2"></div>
+
+      <div class="couple">
+        <div class="avatar avatar--me" id="heroAvaMe">瀚</div>
+        <div class="couple__heart">❤</div>
+        <div class="avatar avatar--her" id="heroAvaHer">梦</div>
+      </div>
+
+      <p class="hero__eyebrow">our little universe</p>
+      <h1 class="hero__title">瀚海遇<span class="hl">伊梦</span></h1>
+      <p class="hero__sub" id="heroSub">瀚瀚 ♡ 伊梦 · 我们的恋爱空间</p>
+
+      <div class="days-card">
+        <div>
+          <div class="days-card__num" id="daysNum">0</div>
+          <div class="days-card__label">天</div>
+        </div>
+        <div class="days-card__div"></div>
+        <div class="days-card__meta">
+          <b id="daysSince">我们已经在一起</b>
+          <small id="daysStart">从 2023 年 5 月 20 日开始</small>
+        </div>
+      </div>
+    </section>
+
+    <div class="dash">
+      <!-- 双方天气 -->
+      <article class="card card--pad span-2" id="weatherCard">
+        <div class="card__head">
+          <h2 class="card__title"><span>🌤</span>双方天气</h2>
+          <span class="wx-time" id="wxTime">正在看看...</span>
+        </div>
+        <div id="wxBody"></div>
+      </article>
+
+      <!-- 下一纪念日 -->
+      <article class="card card--pad">
+        <div class="card__head">
+          <h2 class="card__title"><span>🎂</span>下一纪念日</h2>
+          <a class="card__link" href="anniversary.html">全部 →</a>
+        </div>
+        <div id="annivBox"></div>
+      </article>
+
+      <!-- 今日打卡 -->
+      <article class="card card--pad">
+        <div class="card__head">
+          <h2 class="card__title"><span>✅</span>今日打卡</h2>
+          <a class="card__link" href="checkin.html">详情 →</a>
+        </div>
+        <div class="tasks-inline" id="homeTasks"></div>
+        <div class="mood-line">
+          <span class="mood-line__label">今天的心情</span>
+          <div id="homeMood"></div>
+        </div>
+        <div class="mood-weather" id="moodWeather"></div>
+      </article>
+
+      <!-- 最近照片 -->
+      <article class="card card--pad">
+        <div class="card__head">
+          <h2 class="card__title"><span>📷</span>最近照片</h2>
+          <a class="card__link" href="albums.html">全部 →</a>
+        </div>
+        <div class="mini-photos" id="homePhotos"></div>
+      </article>
+
+      <!-- 最近日记 -->
+      <article class="card card--pad">
+        <div class="card__head">
+          <h2 class="card__title"><span>📖</span>最近日记</h2>
+          <a class="card__link" href="diary.html">全部 →</a>
+        </div>
+        <div class="mini-diary" id="homeDiary"></div>
+      </article>
+
+      <!-- 回忆盲盒 -->
+      <article class="card card--pad span-2">
+        <div class="card__head">
+          <h2 class="card__title"><span>🎁</span>回忆盲盒</h2>
+          <span class="wx-time" id="memoryHint">随机翻一段旧时光</span>
+        </div>
+        <div id="memoryBox"></div>
+      </article>
+
+      <!-- 券包 -->
+      <article class="card card--pad span-2">
+        <div class="card__head">
+          <h2 class="card__title"><span>🎟</span>我们的券包</h2>
+          <a class="card__link" href="bank.html">去恋爱银行 →</a>
+        </div>
+        <div class="home-bank">
+          <div class="home-bank__col">
+            <div class="home-bank__head">
+              <b>我的券包</b>
+              <span class="pill" id="homeBalance">0 积分</span>
+            </div>
+            <div id="homeMyCoupons"></div>
+          </div>
+          <div class="home-bank__col">
+            <div class="home-bank__head">
+              <b>TA 的券包</b>
+              <span class="pill pill--mute" id="homeTheirCount">0 张</span>
+            </div>
+            <div id="homeTheirCoupons"></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 情话 -->
+      <article class="card card--pad span-2">
+        <div class="card__head">
+          <h2 class="card__title"><span>💌</span>今日情话</h2>
+          <a class="card__link" href="diary.html">写点什么 →</a>
+        </div>
+        <div class="quote-box">
+          <p id="quoteText">喜欢你这件事，我打算做很久很久。</p>
+          <button class="btn btn--ghost btn--sm" type="button" id="quoteBtn">换一句 ↻</button>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/page-home.js"></script>
+  <script src="assets/weather.js"></script>
+</body>
+</html>

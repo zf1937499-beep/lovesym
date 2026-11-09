@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>小宇宙 · 瀚海遇伊梦</title>
+  <meta name="theme-color" content="#ffeef5" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body data-page="universe">
+  <main class="page">
+    <div class="page-head">
+      <div>
+        <h1 class="page-head__title">🌌 我们的小宇宙</h1>
+        <p class="page-head__sub">这个月的样子、解锁的徽章、还有一点小惊喜</p>
+      </div>
+    </div>
+
+    <div class="seg" id="tabs" style="margin-bottom:18px">
+      <button type="button" data-tab="report" class="is-on">本月报告</button>
+      <button type="button" data-tab="badges">成就徽章</button>
+      <button type="button" data-tab="quiz">默契问答</button>
+      <button type="button" data-tab="spin">决策转盘</button>
+      <button type="button" data-tab="secret">暗号</button>
+    </div>
+
+    <!-- 本月报告 -->
+    <section class="pane" id="pane-report">
+      <div class="card card--pad report" id="reportBody"></div>
+      <div style="display:flex;justify-content:center;margin-top:14px">
+        <button class="btn btn--ghost btn--sm" type="button" id="printReport">打印 / 存成 PDF</button>
+      </div>
+    </section>
+
+    <!-- 徽章 -->
+    <section class="pane" id="pane-badges" hidden>
+      <div class="card card--pad" style="margin-bottom:14px">
+        <div class="card__head">
+          <h2 class="card__title"><span>🏅</span>解锁进度</h2>
+          <span class="pill" id="badgeCount">0 / 0</span>
+        </div>
+        <div class="bar"><span class="bar__fill" id="badgeBar" style="width:0%"></span></div>
+      </div>
+      <div class="badges" id="badgeGrid"></div>
+    </section>
+
+    <!-- 默契问答 -->
+    <section class="pane" id="pane-quiz" hidden>
+      <div class="card card--pad" id="quizCard" style="margin-bottom:14px"></div>
+      <div class="card card--pad" id="quizStats"></div>
+    </section>
+
+    <!-- 转盘 -->
+    <section class="pane" id="pane-spin" hidden>
+      <div class="spin-wrap">
+        <div class="card card--pad spin-card">
+          <div class="wheel" id="wheel">
+            <div class="wheel__disc" id="wheelDisc"></div>
+            <div class="wheel__pin">♥</div>
+          </div>
+          <button class="btn btn--block" type="button" id="spinBtn" style="margin-top:16px">转一下</button>
+          <p class="hint" id="spinResult" style="text-align:center;margin-top:10px">今天听天由命吧</p>
+        </div>
+
+        <div style="display:grid;gap:14px">
+          <div class="card card--pad">
+            <div class="card__head">
+              <h2 class="card__title"><span>🎯</span>选项</h2>
+              <button class="btn btn--ghost btn--sm" type="button" id="spinEdit">改选项</button>
+            </div>
+            <div id="spinOptions" class="spin-options"></div>
+          </div>
+          <div class="card card--pad">
+            <div class="card__head"><h2 class="card__title"><span>📜</span>最近结果</h2></div>
+            <div id="spinHistory" class="list" style="gap:8px"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 暗号 -->
+    <section class="pane" id="pane-secret" hidden>
+      <div id="secretBody"></div>
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/ai.js"></script>
+  <script src="assets/page-universe.js"></script>
+</body>
+</html>

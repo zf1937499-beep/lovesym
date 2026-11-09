@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>相册 · 瀚海遇伊梦</title>
+  <meta name="theme-color" content="#ffeef5" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body data-page="albums">
+  <main class="page">
+    <!-- 相册列表 -->
+    <section id="viewList">
+      <div class="page-head">
+        <div>
+          <h1 class="page-head__title">📷 相册</h1>
+          <p class="page-head__sub" id="albumSummary">把一起走过的日子存进相册</p>
+        </div>
+        <div class="head-actions">
+          <button class="btn" type="button" id="newAlbumBtn">+ 新建相册</button>
+        </div>
+      </div>
+      <div class="albums" id="albumGrid"></div>
+    </section>
+
+    <!-- 相册详情 -->
+    <section id="viewDetail" hidden>
+      <div class="page-head">
+        <div>
+          <button class="btn btn--ghost btn--sm" type="button" id="backBtn" style="margin-bottom:10px">← 全部相册</button>
+          <h1 class="page-head__title" id="albumName"></h1>
+          <p class="page-head__sub" id="albumMeta"></p>
+        </div>
+        <div class="head-actions">
+          <button class="btn" type="button" id="uploadBtn">+ 上传照片</button>
+          <button class="btn btn--danger" type="button" id="delAlbumBtn">删除相册</button>
+        </div>
+      </div>
+
+      <div class="pgrid" id="photoGrid"></div>
+
+      <label class="uploader" id="uploader" for="fileInput" style="margin-top:14px">
+        <b>＋</b>
+        点这里上传照片，支持一次选多张
+      </label>
+      <input type="file" id="fileInput" accept="image/*" multiple hidden />
+    </section>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/page-albums.js"></script>
+</body>
+</html>

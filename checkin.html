@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>打卡 · 瀚海遇伊梦</title>
+  <meta name="theme-color" content="#ffeef5" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body data-page="checkin">
+  <main class="page">
+    <div class="page-head">
+      <div>
+        <h1 class="page-head__title">✅ 每日打卡</h1>
+        <p class="page-head__sub" id="headSub">今天也让彼此感受到被爱吧</p>
+      </div>
+    </div>
+
+    <div class="checkin-grid">
+      <article class="card card--pad">
+        <div class="card__head">
+          <h2 class="card__title"><span>📋</span>今日任务</h2>
+          <span class="hint" id="countLabel"></span>
+        </div>
+        <div class="list" id="taskList" style="gap:10px"></div>
+        <button class="btn btn--ghost btn--sm" type="button" id="addTask" style="margin-top:14px">+ 添加自定义任务</button>
+      </article>
+
+      <div style="display:grid;gap:16px">
+        <article class="card card--pad">
+          <div class="card__head">
+            <h2 class="card__title"><span>🌤</span>今天的心情</h2>
+          </div>
+          <div class="mood-grid" id="moodGrid"></div>
+          <div class="field" style="margin:14px 0 0">
+            <textarea class="input" id="note" maxlength="100" style="min-height:74px;padding:12px 14px" placeholder="今天想记一句…"></textarea>
+          </div>
+        </article>
+
+        <article class="card card--pad">
+          <div class="card__head">
+            <h2 class="card__title"><span>📈</span>我们的记录</h2>
+          </div>
+          <div class="stats">
+            <div class="stat"><b id="streakNum">0</b><span>连续天数</span></div>
+            <div class="stat"><b id="totalNum">0</b><span>累计打卡</span></div>
+            <div class="stat"><b id="monthNum">0</b><span>本月完成</span></div>
+          </div>
+          <p class="hint" style="margin:14px 0 8px">最近 14 天</p>
+          <div class="heat" id="heat"></div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/page-checkin.js"></script>
+</body>
+</html>

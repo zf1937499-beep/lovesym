@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>设置 · 瀚海遇伊梦</title>
+  <meta name="theme-color" content="#ffeef5" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body data-page="settings">
+  <main class="page">
+    <div class="page-head">
+      <div>
+        <h1 class="page-head__title">⚙️ 设置</h1>
+        <p class="page-head__sub">你们的样子、你们的数据，都由自己做主</p>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:16px;max-width:760px">
+      <!-- 资料 -->
+      <article class="card card--pad">
+        <div class="card__head">
+          <h2 class="card__title"><span>💑</span>我们的资料</h2>
+          <span class="pill" id="whoPill"></span>
+        </div>
+
+        <div class="row-2">
+          <div class="field">
+            <label for="nameMe">瀚瀚的昵称</label>
+            <input class="input" id="nameMe" maxlength="10" />
+          </div>
+          <div class="field">
+            <label for="nameHer">伊梦的昵称</label>
+            <input class="input" id="nameHer" maxlength="10" />
+          </div>
+        </div>
+
+        <div class="row-2">
+          <div class="field">
+            <label>瀚瀚的头像</label>
+            <div class="avatar-pick">
+              <div class="avatar avatar--me" id="avaMe">瀚</div>
+              <button class="btn btn--soft btn--sm" type="button" data-pick="me">换一张</button>
+            </div>
+          </div>
+          <div class="field">
+            <label>伊梦的头像</label>
+            <div class="avatar-pick">
+              <div class="avatar avatar--her" id="avaHer">梦</div>
+              <button class="btn btn--soft btn--sm" type="button" data-pick="her">换一张</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="startDate">在一起的开始时间</label>
+          <input class="input" id="startDate" type="datetime-local" />
+          <p class="hint">首页的天数和大数字都按这个时间算。</p>
+        </div>
+
+        <button class="btn" type="button" id="saveProfile">保存资料</button>
+      </article>
+
+      <!-- 口令 -->
+      <article class="card card--pad">
+        <div class="card__head">
+          <h2 class="card__title"><span>🔒</span>进入口令</h2>
+          <span class="pill" id="passWho"></span>
+        </div>
+        <p class="hint" style="margin-bottom:14px">
+          每次选身份进来都要输一次。初始口令是 12345678，建议改成你们自己记得住的数字。
+        </p>
+        <div class="row-2">
+          <div class="field">
+            <label for="passOld">当前口令</label>
+            <input class="input" id="passOld" type="password" inputmode="numeric" placeholder="••••••••" />
+          </div>
+          <div class="field">
+            <label for="passNew">新口令</label>
+            <input class="input" id="passNew" type="password" inputmode="numeric" placeholder="至少 6 位" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="passNew2">再输一次新口令</label>
+          <input class="input" id="passNew2" type="password" inputmode="numeric" placeholder="要和上面一致" />
+        </div>
+        <button class="btn" type="button" id="savePass">修改口令</button>
+      </article>
+
+      <!-- 数据 -->
+      <article class="card card--pad">
+        <div class="card__head">
+          <h2 class="card__title"><span>💾</span>数据</h2>
+        </div>
+        <div class="setting-row">
+          <div class="setting-row__body">
+            <div class="setting-row__title">导出全部数据</div>
+            <div class="setting-row__desc" id="dbSize">下载一份 JSON，建议定期备份</div>
+          </div>
+          <button class="btn btn--ghost btn--sm" type="button" id="exportBtn">导出 JSON</button>
+        </div>
+        <div class="setting-row">
+          <div class="setting-row__body">
+            <div class="setting-row__title">当前身份</div>
+            <div class="setting-row__desc">切换身份可以体验对方的视角（私密日记会跟着变）</div>
+          </div>
+          <div class="head-actions">
+            <button class="btn btn--soft btn--sm" type="button" data-switch="me">瀚瀚</button>
+            <button class="btn btn--soft btn--sm" type="button" data-switch="her">伊梦</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 危险区 -->
+      <article class="card card--pad danger-zone">
+        <div class="card__head">
+          <h2 class="card__title"><span>🧹</span>危险区</h2>
+        </div>
+        <div class="setting-row">
+          <div class="setting-row__body">
+            <div class="setting-row__title">删除我创建的内容</div>
+            <div class="setting-row__desc">只删除你写的日记和许下的愿望，对方的内容会保留</div>
+          </div>
+          <button class="btn btn--danger btn--sm" type="button" id="delMine">删除</button>
+        </div>
+        <div class="setting-row">
+          <div class="setting-row__body">
+            <div class="setting-row__title">清空全部数据</div>
+            <div class="setting-row__desc">照片、日记、愿望、打卡全部归零，无法恢复</div>
+          </div>
+          <button class="btn btn--danger btn--sm" type="button" id="wipeAll">清空</button>
+        </div>
+      </article>
+
+      <button class="btn btn--ghost btn--block" type="button" id="logoutBtn">退出当前身份</button>
+      <p class="hint" id="storageNote" style="text-align:center;margin-bottom:20px">数据保存在这台设备的浏览器里</p>
+    </div>
+
+    <input type="file" id="avatarInput" accept="image/*" hidden />
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/page-settings.js"></script>
+</body>
+</html>

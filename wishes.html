@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>愿望 · 瀚海遇伊梦</title>
+  <meta name="theme-color" content="#ffeef5" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body data-page="wishes">
+  <main class="page">
+    <div class="page-head">
+      <div>
+        <h1 class="page-head__title">🌠 愿望清单</h1>
+        <p class="page-head__sub">想一起做的事，一件一件打勾</p>
+      </div>
+      <div class="head-actions">
+        <button class="btn btn--ghost" type="button" id="aiPlanBtn">✨ AI 策划约会</button>
+        <button class="btn" type="button" id="addBtn">+ 许个愿</button>
+      </div>
+    </div>
+
+    <div class="seg" id="seg" style="margin-bottom:18px">
+      <button type="button" data-f="all" class="is-on">全部</button>
+      <button type="button" data-f="open">待认领</button>
+      <button type="button" data-f="claimed">进行中</button>
+      <button type="button" data-f="done">已完成</button>
+    </div>
+
+    <div class="wishes" id="list"></div>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/ai.js"></script>
+  <script src="assets/page-wishes.js"></script>
+</body>
+</html>

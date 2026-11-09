@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>日记 · 瀚海遇伊梦</title>
+  <meta name="theme-color" content="#ffeef5" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body data-page="diary">
+  <main class="page">
+    <div class="page-head">
+      <div>
+        <h1 class="page-head__title">📖 日记</h1>
+        <p class="page-head__sub">有些话写给对方，有些话只写给自己</p>
+      </div>
+      <div class="head-actions">
+        <button class="btn btn--ghost" type="button" id="aiDraftBtn">✨ 根据今天生成草稿</button>
+        <button class="btn" type="button" id="writeBtn">✎ 写日记</button>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px">
+      <div class="seg" id="seg">
+        <button type="button" data-f="all" class="is-on">全部</button>
+        <button type="button" data-f="mine">我的</button>
+        <button type="button" data-f="partner">TA 的</button>
+        <button type="button" data-f="private">仅自己</button>
+      </div>
+      <input class="input" id="search" placeholder="搜标题或内容…" style="max-width:230px" />
+    </div>
+
+    <div class="diary-list" id="list"></div>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/ai.js"></script>
+  <script src="assets/page-diary.js"></script>
+</body>
+</html>
