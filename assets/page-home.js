@@ -2,6 +2,14 @@
 HM.page(function (HM) {
   const S = HM.state;
 
+  // index.html 里的文字如果和默认占位不一样，就认为是自定义文案，保留不被覆盖。
+  // 同时也兼容加了 data-hm-keep 的写法。
+  function keepCustom(el, defaultText) {
+    if (!el) return false;
+    if (el.dataset.hmKeep !== undefined) return true;
+    return el.textContent.trim() !== String(defaultText).trim();
+  }
+
   const MOODS = [
     ["😍", "甜到冒泡"],
     ["😊", "开心"],
@@ -36,16 +44,34 @@ HM.page(function (HM) {
     avaHer.style.backgroundImage = `url('${her.avatar}')`;
     avaHer.textContent = "";
   }
-  document.getElementById("heroSub").textContent = `${me.name} ♡ ${her.name} · 我们的恋爱空间`;
+  const heroSub = document.getElementById("heroSub");
+  const heroSubDefault = `${me.name} ♡ ${her.name} · 我们的恋爱空间`;
+  if (!keepCustom(heroSub, heroSubDefault)) {
+    heroSub.textContent = heroSubDefault;
+  }
 
   const start = new Date(S.couple.startDate).getTime();
   function tick() {
     const diff = Math.max(0, Date.now() - start);
     const days = Math.floor(diff / 86400000);
     document.getElementById("daysNum").textContent = days.toLocaleString("en-US");
-    document.getElementById("daysSince").textContent = `今天是我们的第 ${(days + 1).toLocaleString("en-US")} 天`;
+
+    const daysSince = document.getElementById("daysSince");
+    const daysSinceDefault = `今天是我们的第 ${(days + 1).toLocaleString("en-US")} 天`;
+    if (!keepCustom(daysSince, daysSinceDefault)) {
+      daysSince.textContent = daysSinceDefault;
+    }
+
     const d = new Date(S.couple.startDate);
-    document.getElementById("daysStart").textContent = `从 ${d.getFullYear()} 年 ${d.getMonth() + 1} 月 ${d.getDate()} 日开始`;
+    const daysStart = document.getElementById("daysStart");
+    const daysStartDefault = `从 ${d.getFullYear()} 年 ${d.getMonth() + 1} 月 ${d.getDate()} 日开始`;
+    if (!keepCustom(daysStart, daysStartDefault)) {
+      daysStart.textContent = daysStartDefault;
+    } else {
+      // 兼容旧 index.html 里写坏的闭合标签：...出轨我4m/small>
+      const cleaned = daysStart.textContent.replace(/4m\/small>\s*$/i, "").trim();
+      if (cleaned !== daysStart.textContent) daysStart.textContent = cleaned;
+    }
   }
   tick();
   setInterval(tick, 60000);
@@ -402,19 +428,25 @@ HM.page(function (HM) {
 
   /* ---------- 情话 ---------- */
   const quoteEl = document.getElementById("quoteText");
-  let lastQuote = 0;
   const btnQuote = document.getElementById("quoteBtn");
-  quoteEl.textContent = QUOTES[0];
-  btnQuote.addEventListener("click", () => {
-    let next = Math.floor(Math.random() * QUOTES.length);
-    while (next === lastQuote) next = Math.floor(Math.random() * QUOTES.length);
-    lastQuote = next;
-    quoteEl.style.opacity = "0";
-    setTimeout(() => {
-      quoteEl.textContent = QUOTES[next];
-      quoteEl.style.opacity = "1";
-    }, 180);
-  });
+
+  if (keepCustom(quoteEl, QUOTES[0])) {
+    // index.html 里写了自定义文案，保留它，不再用内置情话覆盖
+    if (btnQuote) btnQuote.hidden = true;
+  } else {
+    let lastQuote = 0;
+    quoteEl.textContent = QUOTES[0];
+    btnQuote.addEventListener("click", () => {
+      let next = Math.floor(Math.random() * QUOTES.length);
+      while (next === lastQuote) next = Math.floor(Math.random() * QUOTES.length);
+      lastQuote = next;
+      quoteEl.style.opacity = "0";
+      setTimeout(() => {
+        quoteEl.textContent = QUOTES[next];
+        quoteEl.style.opacity = "1";
+      }, 180);
+    });
+  }
 
   pickMemory();
 });
